@@ -1,2 +1,2 @@
 # kinnari-boutique
-e-coomerce website 
+e-commerce website 
