@@ -1,38 +1,38 @@
 import { createTheme } from '@mui/material/styles';
 
-// Enhanced Indian-inspired color palette for Kinnari-Boutique
+// Luxurious Indian Heritage color palette for affluent clientele
 const colors = {
   primary: {
-    main: '#8B4513', // Saddle Brown - earthy, traditional
-    light: '#F5E6D3', // Warm cream - sophisticated background
-    dark: '#5D2F0A', // Deep brown - elegant depth
+    main: '#722F37', // Deep Maroon - Royal Indian heritage
+    light: '#F7F3F0', // Warm ivory - sophisticated background
+    dark: '#4A1B1F', // Deep burgundy - royal depth
     contrastText: '#FFFFFF',
   },
   secondary: {
-    main: '#C9A96E', // Muted gold - refined elegance
-    light: '#E8D5B7', // Soft champagne
-    dark: '#8B7355', // Antique bronze
+    main: '#D4AF37', // Rich Gold - opulent elegance
+    light: '#F4E9C1', // Champagne gold
+    dark: '#B8941F', // Deep royal gold
     contrastText: '#2C2C2C',
   },
   accent: {
-    main: '#B8860B', // Rich gold accent
-    light: '#DAA520', // Bright gold highlights
-    dark: '#996F00', // Deep gold shadows
+    main: '#CD7F32', // Bronze gold accent - heritage richness
+    light: '#E6B87D', // Light bronze highlights
+    dark: '#8B5A2B', // Deep bronze shadows
   },
   terracotta: {
-    main: '#CD853F', // Warm terracotta
-    light: '#DEB887', // Light terracotta
-    dark: '#A0522D', // Deep terracotta
+    main: '#B8735A', // Rich terracotta - earthy luxury
+    light: '#E6C2B0', // Light rose gold terracotta
+    dark: '#8A4A37', // Deep copper terracotta
   },
   sage: {
-    main: '#9CAF88', // Sage green - natural harmony
-    light: '#B8C5A6', // Light sage
-    dark: '#7A8471', // Deep sage
+    main: '#87A96B', // Rich sage - sophisticated green
+    light: '#B5C99A', // Light sage with warmth
+    dark: '#6B8754', // Deep forest sage
   },
   neutral: {
-    main: '#F8F6F0', // Warm white - premium feel
-    light: '#FEFCF7', // Pure ivory
-    dark: '#E8E2D5', // Soft beige
+    main: '#FAF8F5', // Luxurious warm white - premium feel
+    light: '#FEFDFB', // Pure silk ivory
+    dark: '#F0EBE3', // Warm champagne beige
   },
   success: {
     main: '#6B8E23', // Olive green - natural
@@ -51,29 +51,41 @@ const colors = {
   },
 };
 
-// Enhanced typography with Indian aesthetic and Google Fonts
+// Luxurious typography with heritage-inspired fonts for affluent clientele
 const typography = {
   fontFamily: [
-    'Inter',
-    'Roboto',
-    'system-ui',
-    '-apple-system',
-    'BlinkMacSystemFont',
-    'sans-serif',
+    'Cormorant Garamond',
+    'EB Garamond',
+    'Georgia',
+    'serif',
   ].join(','),
   h1: {
     fontFamily: [
+      'Cormorant Garamond',
       'Playfair Display',
       'Georgia',
       'serif',
     ].join(','),
-    fontSize: '3.5rem',
+    fontSize: '4.5rem',
     fontWeight: 700,
-    lineHeight: 1.2,
-    letterSpacing: '-0.02em',
+    lineHeight: 1.1,
+    letterSpacing: '-0.03em',
   },
   h2: {
     fontFamily: [
+      'Cormorant Garamond',
+      'Playfair Display',
+      'Georgia',
+      'serif',
+    ].join(','),
+    fontSize: '3.25rem',
+    fontWeight: 600,
+    lineHeight: 1.2,
+    letterSpacing: '-0.02em',
+  },
+  h3: {
+    fontFamily: [
+      'Cormorant Garamond',
       'Playfair Display',
       'Georgia',
       'serif',
@@ -83,52 +95,74 @@ const typography = {
     lineHeight: 1.3,
     letterSpacing: '-0.01em',
   },
-  h3: {
+  h4: {
     fontFamily: [
-      'Playfair Display',
+      'Cormorant Garamond',
       'Georgia',
       'serif',
     ].join(','),
-    fontSize: '2.25rem',
-    fontWeight: 600,
+    fontSize: '2.125rem',
+    fontWeight: 500,
     lineHeight: 1.4,
     letterSpacing: '0em',
   },
-  h4: {
-    fontSize: '1.875rem',
-    fontWeight: 600,
-    lineHeight: 1.4,
-    letterSpacing: '0.01em',
-  },
   h5: {
-    fontSize: '1.5rem',
+    fontFamily: [
+      'Cormorant Garamond',
+      'Georgia',
+      'serif',
+    ].join(','),
+    fontSize: '1.75rem',
     fontWeight: 500,
     lineHeight: 1.5,
     letterSpacing: '0.01em',
   },
   h6: {
-    fontSize: '1.25rem',
+    fontFamily: [
+      'Cormorant Garamond',
+      'Georgia',
+      'serif',
+    ].join(','),
+    fontSize: '1.375rem',
     fontWeight: 500,
     lineHeight: 1.5,
     letterSpacing: '0.02em',
   },
   body1: {
+    fontFamily: [
+      'Lato',
+      'Inter',
+      'system-ui',
+      'sans-serif',
+    ].join(','),
+    fontSize: '1.125rem',
+    lineHeight: 1.8,
+    fontWeight: 400,
+    letterSpacing: '0.02em',
+  },
+  body2: {
+    fontFamily: [
+      'Lato',
+      'Inter',
+      'system-ui',
+      'sans-serif',
+    ].join(','),
     fontSize: '1rem',
     lineHeight: 1.7,
     fontWeight: 400,
-    letterSpacing: '0.01em',
-  },
-  body2: {
-    fontSize: '0.875rem',
-    lineHeight: 1.6,
-    fontWeight: 400,
-    letterSpacing: '0.01em',
+    letterSpacing: '0.02em',
   },
   button: {
-    fontSize: '0.875rem',
+    fontFamily: [
+      'Lato',
+      'Inter',
+      'system-ui',
+      'sans-serif',
+    ].join(','),
+    fontSize: '1rem',
     fontWeight: 600,
     textTransform: 'none' as const,
-    letterSpacing: '0.05em',
+    letterSpacing: '0.08em',
   },
   caption: {
     fontSize: '0.75rem',

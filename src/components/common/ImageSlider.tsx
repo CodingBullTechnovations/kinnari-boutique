@@ -127,7 +127,8 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
       sx={{
         position: 'relative',
         width: '100%',
-        height,
+        height: height === '100%' ? '100%' : height,
+        minHeight: height === '100%' ? '70vh' : 'auto',
         borderRadius: `${borderRadius}px`,
         overflow: 'hidden',
         boxShadow: `0 8px 32px ${theme.palette.primary.main}15`,
@@ -198,12 +199,13 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
               <Typography
                 variant="caption"
                 sx={{
-                  color: theme.palette.primary.main,
-                  fontWeight: 600,
+                  color: theme.palette.secondary.main,
+                  fontWeight: 700,
                   textTransform: 'uppercase',
-                  letterSpacing: '1px',
+                  letterSpacing: '2px',
                   mb: 1,
                   display: 'block',
+                  fontFamily: "'Lora', serif",
                 }}
               >
                 {currentSlide.subtitle}
@@ -211,12 +213,15 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             )}
             
             <Typography
-              variant={isMobile ? 'h6' : 'h5'}
+              variant={isMobile ? 'h6' : 'h4'}
               sx={{
+                fontFamily: "'Dancing Script', cursive",
                 fontWeight: 700,
-                mb: currentSlide.description ? 1 : 2,
-                color: theme.palette.text.primary,
-                lineHeight: 1.2,
+                mb: currentSlide.description ? 2 : 3,
+                color: theme.palette.primary.main,
+                lineHeight: 1.3,
+                fontSize: { xs: '1.5rem', md: '2.2rem' },
+                letterSpacing: '0.02em',
               }}
             >
               {currentSlide.title}
@@ -224,11 +229,13 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 
             {currentSlide.description && (
               <Typography
-                variant="body2"
+                variant="body1"
                 sx={{
                   color: theme.palette.text.secondary,
+                  fontFamily: "'Lora', serif",
+                  fontStyle: 'italic',
+                  lineHeight: 1.6,
                   mb: 2,
-                  lineHeight: 1.5,
                 }}
               >
                 {currentSlide.description}
@@ -241,17 +248,21 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                 to={currentSlide.href}
                 variant="contained"
                 sx={{
-                  borderRadius: 2,
+                  borderRadius: 50,
                   textTransform: 'none',
-                  fontWeight: 600,
-                  px: 3,
-                  py: 1,
-                  boxShadow: `0 4px 12px ${theme.palette.primary.main}30`,
+                  fontWeight: 700,
+                  px: 4,
+                  py: 1.5,
+                  fontFamily: "'Lora', serif",
+                  fontSize: '1rem',
+                  letterSpacing: '0.5px',
+                  background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                  boxShadow: `0 6px 20px ${theme.palette.primary.main}40`,
                   '&:hover': {
-                    transform: 'translateY(-2px)',
-                    boxShadow: `0 6px 20px ${theme.palette.primary.main}40`,
+                    transform: 'translateY(-3px) scale(1.05)',
+                    boxShadow: `0 12px 40px ${theme.palette.primary.main}50`,
                   },
-                  transition: 'all 0.3s ease-in-out',
+                  transition: 'all 0.4s ease-in-out',
                 }}
               >
                 {currentSlide.buttonText}

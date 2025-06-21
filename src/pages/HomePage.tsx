@@ -32,17 +32,17 @@ const HomePage: React.FC = () => {
 
   return (
     <Box>
-      {/* Enhanced Hero Section with Okhai-inspired backgrounds */}
+      {/* Luxurious Heritage Hero Section */}
       <Box
         sx={{
           ...sectionBackgrounds.hero,
-          py: { xs: 8, md: 12 },
+          py: { xs: 12, md: 20 },
           textAlign: 'center',
           overflow: 'hidden',
-          minHeight: { xs: '60vh', md: '70vh' },
+          minHeight: { xs: '85vh', md: '90vh' },
           display: 'flex',
           alignItems: 'center',
-          backgroundSize: '100px 100px, cover',
+          backgroundSize: '120px 120px, cover',
           backgroundPosition: 'center, center',
           backgroundRepeat: 'no-repeat, no-repeat',
           '&::after': {
@@ -81,73 +81,80 @@ const HomePage: React.FC = () => {
             <Typography
               variant="body2"
               sx={{
-                color: theme.palette.accent.main,
-                fontWeight: 600,
-                letterSpacing: '2px',
+                color: theme.palette.secondary.main,
+                fontWeight: 700,
+                letterSpacing: '3px',
                 textTransform: 'uppercase',
-                fontSize: '0.9rem',
-                mb: 2,
+                fontSize: { xs: '0.9rem', md: '1rem' },
+                mb: 3,
               }}
             >
-              Authentic Indian Fashion
+              Luxury Indian Heritage
             </Typography>
           </Box>
 
           <Typography
             variant="h1"
             component="h1"
+            className="calligraphic-title"
             sx={{
+              fontFamily: "'Dancing Script', 'Great Vibes', cursive",
               fontWeight: 700,
-              mb: 3,
-              background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.accent.main}, ${theme.palette.secondary.main})`,
+              mb: 4,
+              background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main}, ${theme.palette.accent.main})`,
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              fontSize: { xs: '2.5rem', md: '3.5rem', lg: '4rem' },
-              lineHeight: { xs: 1.2, md: 1.1 },
-              letterSpacing: '-0.02em',
+              fontSize: { xs: '4rem', md: '6rem', lg: '7.5rem' },
+              lineHeight: { xs: 1.1, md: 1 },
+              letterSpacing: '0.02em',
               opacity: 0,
               animation: 'fadeInUp 1s ease-out 0.6s forwards',
-              textShadow: '0 4px 20px rgba(139, 69, 19, 0.1)',
+              textShadow: '0 8px 40px rgba(114, 47, 55, 0.2)',
+              transform: 'rotate(-2deg)',
             }}
           >
             Kinnari Boutique
           </Typography>
 
           <Typography
-            variant="h4"
+            variant="h3"
+            className="heritage-text"
             sx={{
-              mb: 4,
+              mb: 5,
               color: 'text.primary',
-              maxWidth: '700px',
+              maxWidth: '900px',
               mx: 'auto',
               lineHeight: 1.5,
-              fontSize: { xs: '1.2rem', md: '1.6rem' },
+              fontSize: { xs: '1.7rem', md: '2.5rem' },
               fontWeight: 400,
-              fontFamily: 'Playfair Display, serif',
+              fontFamily: "'Playfair Display', 'Libre Baskerville', serif",
+              fontStyle: 'italic',
               opacity: 0,
               animation: 'fadeInUp 1s ease-out 0.9s forwards',
             }}
           >
-            Where timeless elegance meets contemporary style
+            "Where Royal Elegance Meets Timeless Artistry"
           </Typography>
 
           <Typography
             variant="h6"
+            className="heritage-text"
             sx={{
-              mb: 6,
+              mb: 8,
               color: 'text.secondary',
-              maxWidth: '600px',
+              maxWidth: '750px',
               mx: 'auto',
-              lineHeight: 1.6,
-              fontSize: { xs: '1rem', md: '1.1rem' },
+              lineHeight: 1.8,
+              fontSize: { xs: '1.2rem', md: '1.4rem' },
               fontWeight: 400,
+              fontFamily: "'Crimson Text', 'Libre Baskerville', serif",
               opacity: 0,
               animation: 'fadeInUp 1s ease-out 1.2s forwards',
             }}
           >
-            Discover handcrafted pieces that celebrate India's rich heritage while embracing modern sensibilities.
-            Each creation tells a story of artistry, tradition, and timeless beauty.
+            Discover exquisite handcrafted couture celebrating India's magnificent heritage. 
+            Each masterpiece embodies centuries of artistic tradition, thoughtfully curated for the most discerning connoisseurs.
           </Typography>
           <Box
             sx={{
@@ -165,18 +172,19 @@ const HomePage: React.FC = () => {
               component={Link}
               to="/products"
               sx={{
-                px: 8,
-                py: 2.5,
-                fontSize: '1.1rem',
+                px: 10,
+                py: 3.5,
+                fontSize: { xs: '1.1rem', md: '1.2rem' },
                 fontWeight: 600,
                 borderRadius: 50,
-                background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.accent.main})`,
-                boxShadow: `0 12px 40px ${theme.palette.primary.main}25`,
+                background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                boxShadow: `0 16px 50px ${theme.palette.primary.main}30`,
                 position: 'relative',
                 overflow: 'hidden',
+                letterSpacing: '0.1em',
                 '&:hover': {
-                  transform: 'translateY(-3px) scale(1.02)',
-                  boxShadow: `0 20px 60px ${theme.palette.primary.main}35`,
+                  transform: 'translateY(-4px) scale(1.02)',
+                  boxShadow: `0 25px 70px ${theme.palette.primary.main}40`,
                   '&::before': {
                     transform: 'translateX(100%)',
                   },
@@ -188,13 +196,13 @@ const HomePage: React.FC = () => {
                   left: '-100%',
                   width: '100%',
                   height: '100%',
-                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
+                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)',
                   transition: 'transform 0.6s ease',
                 },
                 transition: 'all 0.4s ease-in-out',
               }}
             >
-              Explore Collection
+              Explore Couture Collection
             </Button>
             <Button
               variant="outlined"
@@ -202,77 +210,88 @@ const HomePage: React.FC = () => {
               component={Link}
               to="/about"
               sx={{
-                px: 8,
-                py: 2.5,
-                fontSize: '1.1rem',
+                px: 10,
+                py: 3.5,
+                fontSize: { xs: '1.1rem', md: '1.2rem' },
                 fontWeight: 600,
                 borderRadius: 50,
                 borderWidth: 2,
-                borderColor: theme.palette.accent.main,
-                color: theme.palette.accent.main,
-                background: 'rgba(255, 255, 255, 0.1)',
-                backdropFilter: 'blur(10px)',
+                borderColor: theme.palette.secondary.main,
+                color: theme.palette.secondary.main,
+                background: 'rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(15px)',
+                letterSpacing: '0.1em',
                 '&:hover': {
                   borderWidth: 2,
-                  borderColor: theme.palette.accent.main,
-                  backgroundColor: theme.palette.accent.main,
+                  borderColor: theme.palette.secondary.main,
+                  backgroundColor: theme.palette.secondary.main,
                   color: 'white',
-                  transform: 'translateY(-3px) scale(1.02)',
-                  boxShadow: `0 16px 48px ${theme.palette.accent.main}25`,
+                  transform: 'translateY(-4px) scale(1.02)',
+                  boxShadow: `0 20px 60px ${theme.palette.secondary.main}30`,
                 },
                 transition: 'all 0.4s ease-in-out',
               }}
             >
-              Our Heritage
+              Discover Our Legacy
             </Button>
           </Box>
         </Container>
       </Box>
 
-      {/* Featured Collections Slider - Full Width */}
+      {/* Full-Screen Signature Collections - Irresistible for Indian Ladies */}
       <Box
         sx={{
-          py: { xs: 4, md: 6 },
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
           backgroundColor: theme.palette.background.default,
+          background: `linear-gradient(135deg, ${theme.palette.neutral.main}95, ${theme.palette.neutral.light}98)`,
         }}
       >
-        <Container maxWidth="lg" sx={{ mb: 4 }}>
+        <Container maxWidth="xl" sx={{ py: { xs: 8, md: 12 }, mb: 4 }}>
           <Box sx={{ textAlign: 'center' }}>
             <Typography
               variant="h2"
               component="h2"
+              className="calligraphic-title"
               sx={{
-                fontWeight: 600,
+                fontFamily: "'Dancing Script', 'Playfair Display', serif",
+                fontWeight: 700,
                 color: theme.palette.primary.main,
-                mb: 2,
-                fontSize: { xs: '1.75rem', md: '2.25rem' },
+                mb: 3,
+                fontSize: { xs: '3rem', md: '4.5rem' },
+                letterSpacing: '0.02em',
+                transform: 'rotate(-1deg)',
               }}
             >
-              Featured Collections
+              Signature Collections
             </Typography>
             <Typography
               variant="h6"
+              className="heritage-text"
               sx={{
                 color: 'text.secondary',
-                maxWidth: '500px',
+                maxWidth: '800px',
                 mx: 'auto',
-                lineHeight: 1.5,
+                lineHeight: 1.7,
                 fontWeight: 400,
-                fontSize: { xs: '1rem', md: '1.1rem' },
+                fontSize: { xs: '1.2rem', md: '1.4rem' },
+                fontFamily: "'Crimson Text', 'Libre Baskerville', serif",
+                fontStyle: 'italic',
               }}
             >
-              Discover our handpicked collections showcasing traditional Indian craftsmanship
+              "Curated masterpieces showcasing the pinnacle of traditional Indian artistry and contemporary luxury"
             </Typography>
           </Box>
         </Container>
 
-        {/* Full Width Slider */}
-        <Box sx={{ width: '100%', overflow: 'hidden' }}>
+        {/* Full-Screen Slider that takes remaining space */}
+        <Box sx={{ flexGrow: 1, width: '100%', overflow: 'hidden', minHeight: '70vh' }}>
           <ImageSlider
             slides={featuredProductSlides}
-            height={480}
+            height="100%"
             autoPlay={true}
-            autoPlayInterval={5000}
+            autoPlayInterval={6000}
             showDots={true}
             showArrows={true}
             showPlayPause={false}
@@ -281,60 +300,75 @@ const HomePage: React.FC = () => {
         </Box>
       </Box>
 
-      {/* Enhanced Featured Categories */}
+      {/* Heritage Collections - Complete New Section */}
       <Box
         sx={{
           ...sectionBackgrounds.elegant,
-          py: { xs: 4, md: 6 },
+          py: { xs: 12, md: 16 },
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
         }}
       >
-        <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', mb: 4 }}>
+        <Container maxWidth="xl">
+        <Box sx={{ textAlign: 'center', mb: 12 }}>
           <Typography
             variant="h2"
             component="h2"
+            className="calligraphic-title"
             sx={{
+              fontFamily: "'Great Vibes', 'Dancing Script', cursive",
               fontWeight: 600,
               color: theme.palette.primary.main,
-              mb: 2,
-              fontSize: { xs: '1.75rem', md: '2.25rem' },
+              mb: 4,
+              fontSize: { xs: '3.5rem', md: '5rem' },
+              letterSpacing: '0.03em',
+              transform: 'rotate(-0.5deg)',
+              textShadow: `0 4px 20px ${theme.palette.primary.main}20`,
             }}
           >
-            Explore Our Collections
+            Heritage Collections
           </Typography>
           <Typography
-            variant="h6"
+            variant="h5"
+            className="heritage-text"
             sx={{
               color: 'text.secondary',
-              maxWidth: '500px',
+              maxWidth: '800px',
               mx: 'auto',
-              lineHeight: 1.5,
+              lineHeight: 1.8,
               fontWeight: 400,
-              fontSize: { xs: '1rem', md: '1.1rem' },
+              fontSize: { xs: '1.3rem', md: '1.6rem' },
+              fontFamily: "'Playfair Display', 'Libre Baskerville', serif",
+              fontStyle: 'italic',
             }}
           >
-            Each collection represents a unique tradition of Indian craftsmanship
+            "Each collection embodies centuries of refined artisanal traditions, 
+            meticulously preserved for the most discerning connoisseurs of Indian heritage"
           </Typography>
         </Box>
-        <Grid container spacing={4}>
+        <Grid container spacing={6}>
           {categories.map((category) => (
             <Grid size={{ xs: 12, md: 4 }} key={category.id}>
               <Card
                 sx={{
                   height: '100%',
                   cursor: 'pointer',
-                  transition: 'all 0.3s ease-in-out',
-                  borderRadius: 3,
+                  transition: 'all 0.4s ease-in-out',
+                  borderRadius: 4,
                   overflow: 'hidden',
                   position: 'relative',
+                  background: theme.palette.neutral.light,
+                  boxShadow: `0 8px 32px ${theme.palette.primary.main}15`,
                   '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: `0 16px 40px ${theme.palette.primary.main}20`,
+                    transform: 'translateY(-12px)',
+                    boxShadow: `0 20px 60px ${theme.palette.primary.main}25`,
                     '& .category-overlay': {
                       opacity: 1,
                     },
                     '& .category-image': {
-                      transform: 'scale(1.03)',
+                      transform: 'scale(1.05)',
                     },
                   },
                 }}
@@ -346,11 +380,11 @@ const HomePage: React.FC = () => {
                   <CardMedia
                     className="category-image"
                     component="img"
-                    height="320"
+                    height="400"
                     image={category.image}
                     alt={category.name}
                     sx={{
-                      transition: 'transform 0.3s ease-in-out',
+                      transition: 'transform 0.4s ease-in-out',
                       objectFit: 'cover',
                     }}
                   />
@@ -362,31 +396,33 @@ const HomePage: React.FC = () => {
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      background: `linear-gradient(45deg, ${theme.palette.primary.main}20, ${theme.palette.secondary.main}20)`,
+                      background: `linear-gradient(45deg, ${theme.palette.primary.main}25, ${theme.palette.secondary.main}15)`,
                       opacity: 0,
-                      transition: 'opacity 0.3s ease-in-out',
+                      transition: 'opacity 0.4s ease-in-out',
                     }}
                   />
                 </Box>
-                <CardContent sx={{ p: 3 }}>
+                <CardContent sx={{ p: 4 }}>
                   <Typography
-                    variant="h6"
+                    variant="h5"
                     component="h3"
                     sx={{
                       fontWeight: 600,
-                      mb: 1.5,
+                      mb: 2,
                       color: theme.palette.primary.main,
-                      fontSize: '1.2rem',
+                      fontSize: '1.4rem',
+                      fontFamily: 'Cormorant Garamond, serif',
                     }}
                   >
                     {category.name}
                   </Typography>
                   <Typography
-                    variant="body2"
+                    variant="body1"
                     sx={{
                       color: 'text.secondary',
-                      lineHeight: 1.5,
-                      fontSize: '0.9rem',
+                      lineHeight: 1.7,
+                      fontSize: '1rem',
+                      fontFamily: 'Lato, sans-serif',
                     }}
                   >
                     {category.description}
@@ -399,42 +435,44 @@ const HomePage: React.FC = () => {
         </Container>
       </Box>
 
-      {/* Enhanced Featured Products Section */}
+      {/* Exclusive Featured Masterpieces */}
       <Box
         sx={{
           ...sectionBackgrounds.featured,
-          py: { xs: 4, md: 6 },
+          py: { xs: 8, md: 12 },
         }}
       >
         <Container maxWidth="lg">
-          <Box sx={{ textAlign: 'center', mb: 4 }}>
+          <Box sx={{ textAlign: 'center', mb: 8 }}>
             <Typography
               variant="h2"
               component="h2"
               sx={{
                 fontWeight: 600,
                 color: theme.palette.primary.main,
-                mb: 2,
-                fontSize: { xs: '1.75rem', md: '2.25rem' },
+                mb: 3,
+                fontSize: { xs: '2.25rem', md: '3rem' },
+                fontFamily: 'Cormorant Garamond, serif',
               }}
             >
-              Featured Creations
+              Exclusive Masterpieces
             </Typography>
             <Typography
               variant="h6"
               sx={{
                 color: 'text.secondary',
-                maxWidth: '500px',
+                maxWidth: '650px',
                 mx: 'auto',
-                lineHeight: 1.5,
+                lineHeight: 1.6,
                 fontWeight: 400,
-                fontSize: { xs: '1rem', md: '1.1rem' },
+                fontSize: { xs: '1.1rem', md: '1.25rem' },
+                fontFamily: 'Lato, sans-serif',
               }}
             >
-              Handpicked pieces showcasing the finest artistry and craftsmanship
+              Meticulously handpicked couture pieces representing the epitome of luxury and artistic excellence
             </Typography>
           </Box>
-          <Grid container spacing={4}>
+          <Grid container spacing={6}>
             {featuredProducts.slice(0, 3).map((product) => (
               <Grid size={{ xs: 12, sm: 6, md: 4 }} key={product.id}>
                 <ProductCard
@@ -445,111 +483,131 @@ const HomePage: React.FC = () => {
               </Grid>
             ))}
           </Grid>
-          <Box sx={{ textAlign: 'center', mt: 4 }}>
+          <Box sx={{ textAlign: 'center', mt: 8 }}>
             <Button
               variant="outlined"
               size="large"
               component={Link}
               to="/products"
               sx={{
-                px: 5,
-                py: 1.5,
-                fontSize: '1rem',
+                px: 8,
+                py: 2.5,
+                fontSize: '1.1rem',
                 fontWeight: 600,
-                borderRadius: 2,
+                borderRadius: 50,
                 borderWidth: 2,
+                borderColor: theme.palette.primary.main,
+                color: theme.palette.primary.main,
+                letterSpacing: '0.08em',
                 '&:hover': {
                   borderWidth: 2,
-                  transform: 'translateY(-2px)',
-                  boxShadow: `0 6px 20px ${theme.palette.primary.main}20`,
+                  transform: 'translateY(-3px)',
+                  boxShadow: `0 12px 40px ${theme.palette.primary.main}25`,
+                  backgroundColor: theme.palette.primary.main,
+                  color: 'white',
                 },
-                transition: 'all 0.3s ease-in-out',
+                transition: 'all 0.4s ease-in-out',
               }}
             >
-              Discover All Creations
+              View Complete Collection
             </Button>
           </Box>
         </Container>
       </Box>
 
-      {/* Enhanced Features Section */}
+      {/* Luxurious Heritage Promise Section */}
       <Box
         sx={{
           ...sectionBackgrounds.premium,
-          py: { xs: 8, md: 12 },
+          py: { xs: 12, md: 16 },
         }}
       >
         <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', mb: 8 }}>
+        <Box sx={{ textAlign: 'center', mb: 12 }}>
           <Typography
             variant="h2"
             component="h2"
             sx={{
               fontWeight: 600,
               color: theme.palette.primary.main,
-              mb: 3,
-              fontSize: { xs: '2rem', md: '2.75rem' },
+              mb: 4,
+              fontSize: { xs: '2.5rem', md: '3.5rem' },
+              fontFamily: 'Cormorant Garamond, serif',
             }}
           >
-            The Kinnari Promise
+            The Kinnari Legacy
           </Typography>
           <Typography
             variant="h6"
             sx={{
               color: 'text.secondary',
-              maxWidth: '700px',
+              maxWidth: '800px',
               mx: 'auto',
-              lineHeight: 1.6,
+              lineHeight: 1.7,
               fontWeight: 400,
+              fontSize: { xs: '1.1rem', md: '1.3rem' },
+              fontFamily: 'Lato, sans-serif',
             }}
           >
-            Our commitment to excellence goes beyond fashion – we're preserving heritage,
-            empowering artisans, and creating a sustainable future for Indian craftsmanship.
+            Our unwavering commitment transcends mere fashion – we are custodians of India's cultural heritage,
+            empowering master artisans, and creating an enduring legacy of sustainable luxury craftsmanship.
           </Typography>
         </Box>
-        <Grid container spacing={6}>
+        <Grid container spacing={8}>
           <Grid size={{ xs: 12, md: 4 }}>
             <Box
               sx={{
                 textAlign: 'center',
-                p: 4,
-                borderRadius: 4,
-                transition: 'all 0.3s ease-in-out',
+                p: 6,
+                borderRadius: 6,
+                background: `linear-gradient(135deg, ${theme.palette.neutral.light}90, ${theme.palette.neutral.main}95)`,
+                transition: 'all 0.4s ease-in-out',
                 '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: `0 16px 48px ${theme.palette.primary.main}15`,
+                  transform: 'translateY(-12px)',
+                  boxShadow: `0 20px 60px ${theme.palette.primary.main}20`,
                 },
               }}
             >
               <Box
                 sx={{
-                  width: 80,
-                  height: 80,
+                  width: 100,
+                  height: 100,
                   borderRadius: '50%',
                   background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   mx: 'auto',
-                  mb: 3,
-                  fontSize: '2rem',
+                  mb: 4,
+                  fontSize: '2.5rem',
+                  boxShadow: `0 8px 32px ${theme.palette.primary.main}25`,
                 }}
               >
                 🎨
               </Box>
               <Typography
-                variant="h5"
+                variant="h4"
                 sx={{
                   fontWeight: 600,
                   mb: 3,
                   color: theme.palette.primary.main,
+                  fontFamily: 'Cormorant Garamond, serif',
+                  fontSize: '1.8rem',
                 }}
               >
-                Authentic Craftsmanship
+                Master Craftsmanship
               </Typography>
-              <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
-                Each piece is handcrafted by skilled artisans, preserving traditional techniques
-                passed down through generations, ensuring every creation is unique and meaningful.
+              <Typography 
+                variant="body1" 
+                sx={{ 
+                  color: 'text.secondary', 
+                  lineHeight: 1.8,
+                  fontSize: '1.1rem',
+                  fontFamily: 'Lato, sans-serif',
+                }}
+              >
+                Each masterpiece is meticulously handcrafted by renowned artisans, preserving ancient techniques
+                refined over millennia, ensuring every creation embodies unparalleled artistry and cultural significance.
               </Typography>
             </Box>
           </Grid>
@@ -557,44 +615,56 @@ const HomePage: React.FC = () => {
             <Box
               sx={{
                 textAlign: 'center',
-                p: 4,
-                borderRadius: 4,
-                transition: 'all 0.3s ease-in-out',
+                p: 6,
+                borderRadius: 6,
+                background: `linear-gradient(135deg, ${theme.palette.neutral.light}90, ${theme.palette.neutral.main}95)`,
+                transition: 'all 0.4s ease-in-out',
                 '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: `0 16px 48px ${theme.palette.secondary.main}15`,
+                  transform: 'translateY(-12px)',
+                  boxShadow: `0 20px 60px ${theme.palette.secondary.main}20`,
                 },
               }}
             >
               <Box
                 sx={{
-                  width: 80,
-                  height: 80,
+                  width: 100,
+                  height: 100,
                   borderRadius: '50%',
-                  background: `linear-gradient(135deg, ${theme.palette.secondary.main}, ${theme.palette.primary.main})`,
+                  background: `linear-gradient(135deg, ${theme.palette.secondary.main}, ${theme.palette.accent.main})`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   mx: 'auto',
-                  mb: 3,
-                  fontSize: '2rem',
+                  mb: 4,
+                  fontSize: '2.5rem',
+                  boxShadow: `0 8px 32px ${theme.palette.secondary.main}25`,
                 }}
               >
                 ✨
               </Box>
               <Typography
-                variant="h5"
+                variant="h4"
                 sx={{
                   fontWeight: 600,
                   mb: 3,
                   color: theme.palette.primary.main,
+                  fontFamily: 'Cormorant Garamond, serif',
+                  fontSize: '1.8rem',
                 }}
               >
-                Premium Quality
+                Opulent Materials
               </Typography>
-              <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
-                We source only the finest fabrics and materials, ensuring every piece offers
-                exceptional comfort, durability, and timeless appeal that lasts for generations.
+              <Typography 
+                variant="body1" 
+                sx={{ 
+                  color: 'text.secondary', 
+                  lineHeight: 1.8,
+                  fontSize: '1.1rem',
+                  fontFamily: 'Lato, sans-serif',
+                }}
+              >
+                We procure only the most exquisite fabrics and precious materials from across the subcontinent,
+                ensuring each piece embodies exceptional luxury, comfort, and timeless elegance spanning generations.
               </Typography>
             </Box>
           </Grid>
@@ -602,44 +672,56 @@ const HomePage: React.FC = () => {
             <Box
               sx={{
                 textAlign: 'center',
-                p: 4,
-                borderRadius: 4,
-                transition: 'all 0.3s ease-in-out',
+                p: 6,
+                borderRadius: 6,
+                background: `linear-gradient(135deg, ${theme.palette.neutral.light}90, ${theme.palette.neutral.main}95)`,
+                transition: 'all 0.4s ease-in-out',
                 '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: `0 16px 48px ${theme.palette.success.main}15`,
+                  transform: 'translateY(-12px)',
+                  boxShadow: `0 20px 60px ${theme.palette.sage.main}20`,
                 },
               }}
             >
               <Box
                 sx={{
-                  width: 80,
-                  height: 80,
+                  width: 100,
+                  height: 100,
                   borderRadius: '50%',
-                  background: `linear-gradient(135deg, ${theme.palette.success.main}, ${theme.palette.secondary.main})`,
+                  background: `linear-gradient(135deg, ${theme.palette.sage.main}, ${theme.palette.secondary.main})`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   mx: 'auto',
-                  mb: 3,
-                  fontSize: '2rem',
+                  mb: 4,
+                  fontSize: '2.5rem',
+                  boxShadow: `0 8px 32px ${theme.palette.sage.main}25`,
                 }}
               >
                 🌱
               </Box>
               <Typography
-                variant="h5"
+                variant="h4"
                 sx={{
                   fontWeight: 600,
                   mb: 3,
                   color: theme.palette.primary.main,
+                  fontFamily: 'Cormorant Garamond, serif',
+                  fontSize: '1.8rem',
                 }}
               >
-                Sustainable Heritage
+                Cultural Stewardship
               </Typography>
-              <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
-                Supporting local artisan communities and promoting eco-friendly practices,
-                we're building a sustainable future while preserving India's rich cultural heritage.
+              <Typography 
+                variant="body1" 
+                sx={{ 
+                  color: 'text.secondary', 
+                  lineHeight: 1.8,
+                  fontSize: '1.1rem',
+                  fontFamily: 'Lato, sans-serif',
+                }}
+              >
+                Championing artisan communities through sustainable practices and ethical sourcing,
+                we are dedicated custodians preserving India's magnificent cultural heritage for future generations.
               </Typography>
             </Box>
           </Grid>

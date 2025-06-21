@@ -17,13 +17,27 @@ import {
   AccordionSummary,
   AccordionDetails,
   useTheme,
+  Card,
+  CardContent,
+  IconButton,
+  Rating,
 } from '@mui/material';
-import { ExpandMore, FilterList, Clear } from '@mui/icons-material';
+import { 
+  ExpandMore, 
+  FilterList, 
+  Clear, 
+  Favorite, 
+  FavoriteBorder, 
+  ShoppingCart,
+  Visibility,
+} from '@mui/icons-material';
 import { useParams, useSearchParams } from 'react-router-dom';
 import ProductCard from '../components/product/ProductCard';
 import BreadcrumbNav from '../components/common/BreadcrumbNav';
+import LazyImage from '../components/common/LazyImage';
 import { products, categories, getProductsByCategory } from '../data/products';
 import { Product } from '../types';
+import { Link } from 'react-router-dom';
 
 // Subcategory mapping for URL slugs to display names
 const subcategoryMapping: { [key: string]: string } = {
@@ -46,6 +60,278 @@ const subcategoryMapping: { [key: string]: string } = {
   'featured': 'Featured',
   'new': 'New Arrivals',
   'sale': 'Sale'
+};
+
+// Luxury Square Product Card - Perfect for Rich Indian Ladies
+interface LuxurySquareProductCardProps {
+  product: Product;
+  onAddToCart?: (product: Product) => void;
+  onToggleFavorite?: (product: Product) => void;
+  isFavorite?: boolean;
+}
+
+const LuxurySquareProductCard: React.FC<LuxurySquareProductCardProps> = ({
+  product,
+  onAddToCart,
+  onToggleFavorite,
+  isFavorite = false,
+}) => {
+  const theme = useTheme();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onAddToCart?.(product);
+  };
+
+  const handleToggleFavorite = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onToggleFavorite?.(product);
+  };
+
+  const discountPercentage = product.originalPrice
+    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+    : 0;
+
+  return (
+    <Card
+      component={Link}
+      to={`/product/${product.id}`}
+      sx={{
+        textDecoration: 'none',
+        color: 'inherit',
+        position: 'relative',
+        borderRadius: 4,
+        overflow: 'hidden',
+        transition: 'all 0.4s ease-in-out',
+        boxShadow: `0 6px 24px rgba(114, 47, 55, 0.15)`,
+        background: `linear-gradient(135deg, #FAF8F5, #F7F3F0)`,
+        border: `1px solid rgba(212, 175, 55, 0.3)`,
+        '&:hover': {
+          transform: 'translateY(-8px) scale(1.02)',
+          boxShadow: `0 16px 48px rgba(114, 47, 55, 0.25)`,
+          '& .product-overlay': {
+            opacity: 1,
+          },
+          '& .product-image': {
+            transform: 'scale(1.1)',
+          },
+        },
+      }}
+    >
+      {/* Discount Badge */}
+      {discountPercentage > 0 && (
+        <Chip
+          label={`${discountPercentage}% OFF`}
+          sx={{
+            position: 'absolute',
+            top: 8,
+            left: 8,
+            zIndex: 2,
+            fontWeight: 700,
+            fontSize: '0.75rem',
+            background: `linear-gradient(135deg, #D4AF37, #B8941F)`,
+            color: 'white',
+            boxShadow: `0 2px 8px rgba(212, 175, 55, 0.4)`,
+          }}
+        />
+      )}
+
+      {/* Favorite Button */}
+      <IconButton
+        onClick={handleToggleFavorite}
+        sx={{
+          position: 'absolute',
+          top: 8,
+          right: 8,
+          zIndex: 2,
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
+          backdropFilter: 'blur(4px)',
+          '&:hover': {
+            backgroundColor: 'white',
+            transform: 'scale(1.1)',
+          },
+          transition: 'all 0.3s ease-in-out',
+        }}
+      >
+        {isFavorite ? (
+          <Favorite sx={{ color: theme.palette.secondary.main }} />
+        ) : (
+          <FavoriteBorder sx={{ color: theme.palette.primary.main }} />
+        )}
+      </IconButton>
+
+      {/* Perfect Square Image for Rich Indian Ladies */}
+      <Box 
+        sx={{ 
+          position: 'relative', 
+          width: '100%',
+          aspectRatio: '1/1', // Perfect square
+          overflow: 'hidden',
+        }}
+      >
+        <LazyImage
+          className="product-image"
+          src={product.images[0]}
+          alt={product.name}
+          width={400}
+          height={400}
+          fallbackSrc={product.images[1]}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            transition: 'transform 0.4s ease-in-out',
+          }}
+        />
+        
+        {/* Elegant Overlay */}
+        <Box
+          className="product-overlay"
+          sx={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            background: `linear-gradient(transparent, rgba(0,0,0,0.6))`,
+            opacity: 0,
+            transition: 'opacity 0.3s ease-in-out',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'flex-end',
+            p: 2,
+          }}
+        >
+          <IconButton
+            onClick={handleAddToCart}
+            sx={{
+              backgroundColor: theme.palette.primary.main,
+              color: 'white',
+              '&:hover': {
+                backgroundColor: theme.palette.primary.dark,
+                transform: 'scale(1.1)',
+              },
+              transition: 'all 0.3s ease-in-out',
+            }}
+          >
+            <ShoppingCart />
+          </IconButton>
+        </Box>
+      </Box>
+
+      {/* Elegant Product Details */}
+      <CardContent sx={{ p: 3 }}>
+        {/* Heritage Craft Type */}
+        {product.craftType && (
+          <Chip
+            label={product.craftType}
+            size="small"
+            sx={{
+              mb: 2,
+              fontSize: '0.75rem',
+              fontWeight: 600,
+              color: theme.palette.secondary.main,
+              backgroundColor: `${theme.palette.secondary.main}10`,
+              border: `1px solid ${theme.palette.secondary.main}30`,
+              fontFamily: "'Lora', serif",
+            }}
+          />
+        )}
+
+        {/* Elegant Product Name */}
+        <Typography
+          variant="h6"
+          component="h3"
+          sx={{
+            fontFamily: "'Playfair Display', serif",
+            fontWeight: 600,
+            mb: 1,
+            lineHeight: 1.3,
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+            color: theme.palette.text.primary,
+            fontSize: '1.1rem',
+          }}
+        >
+          {product.name}
+        </Typography>
+
+        {/* Single Line Description - Perfect for Rich Ladies */}
+        <Typography
+          variant="body2"
+          sx={{
+            color: 'text.secondary',
+            mb: 2,
+            lineHeight: 1.4,
+            fontFamily: "'Lora', serif",
+            fontStyle: 'italic',
+            display: '-webkit-box',
+            WebkitLineClamp: 1, // Only one line
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+          }}
+        >
+          {product.description}
+        </Typography>
+
+        {/* Refined Rating */}
+        {product.rating && (
+          <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+            <Rating
+              value={product.rating}
+              precision={0.1}
+              size="small"
+              readOnly
+              sx={{
+                '& .MuiRating-iconFilled': {
+                  color: theme.palette.secondary.main,
+                },
+              }}
+            />
+            <Typography 
+              variant="caption" 
+              color="text.secondary" 
+              sx={{ ml: 1, fontFamily: "'Lora', serif" }}
+            >
+              ({product.reviewCount})
+            </Typography>
+          </Box>
+        )}
+
+        {/* Luxurious Price Display */}
+        <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1 }}>
+          <Typography
+            variant="h6"
+            component="span"
+            sx={{
+              fontFamily: "'Playfair Display', serif",
+              fontWeight: 700,
+              color: theme.palette.primary.main,
+              fontSize: '1.3rem',
+            }}
+          >
+            ₹{product.price.toLocaleString()}
+          </Typography>
+          {product.originalPrice && (
+            <Typography
+              variant="body2"
+              component="span"
+              sx={{
+                textDecoration: 'line-through',
+                color: 'text.secondary',
+                fontFamily: "'Lora', serif",
+              }}
+            >
+              ₹{product.originalPrice.toLocaleString()}
+            </Typography>
+          )}
+        </Box>
+      </CardContent>
+    </Card>
+  );
 };
 
 const ProductsPage: React.FC = () => {
@@ -172,49 +458,91 @@ const ProductsPage: React.FC = () => {
         : 'All Products';
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
+    <Container maxWidth="xl" sx={{ py: 6 }}>
       {/* Enhanced Breadcrumbs */}
       <BreadcrumbNav />
 
-      {/* Enhanced Page Header */}
-      <Box sx={{ mb: 4 }}>
+      {/* Luxurious Page Header - Irresistible for Rich Indian Ladies */}
+      <Box sx={{ mb: 6, textAlign: 'center' }}>
         <Typography
           variant="h2"
           component="h1"
           sx={{
-            fontWeight: 600,
+            fontFamily: "'Dancing Script', cursive",
+            fontWeight: 700,
             color: theme.palette.primary.main,
-            mb: 2,
-            fontSize: { xs: '2rem', md: '2.75rem' },
+            mb: 3,
+            fontSize: { xs: '3rem', md: '4.5rem' },
+            letterSpacing: '0.02em',
+            transform: 'rotate(-1deg)',
+            textShadow: `0 4px 20px ${theme.palette.primary.main}20`,
           }}
         >
           {pageTitle}
         </Typography>
         {currentCategory?.description && (
-          <Typography variant="h6" color="text.secondary" sx={{ lineHeight: 1.6 }}>
-            {currentCategory.description}
+          <Typography 
+            variant="h6" 
+            sx={{ 
+              color: 'text.secondary',
+              lineHeight: 1.7,
+              fontFamily: "'Playfair Display', serif",
+              fontStyle: 'italic',
+              maxWidth: '600px',
+              mx: 'auto',
+              mb: 2,
+            }}
+          >
+            "{currentCategory.description}"
           </Typography>
         )}
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-          {filteredProducts.length} products found
+        <Typography 
+          variant="h6" 
+          sx={{ 
+            color: theme.palette.secondary.main,
+            fontFamily: "'Lora', serif",
+            fontWeight: 600,
+          }}
+        >
+          {filteredProducts.length} Exquisite Creations Await
         </Typography>
       </Box>
 
-      {/* Enhanced Filters and Sorting */}
-      <Grid container spacing={3} sx={{ mb: 4 }}>
-        {/* Filters Sidebar */}
-        <Grid size={{ xs: 12, md: 3 }}>
-          <Paper sx={{ p: 3, borderRadius: 3 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
-              <Typography variant="h6" sx={{ fontWeight: 600, display: 'flex', alignItems: 'center' }}>
+      {/* Luxurious Filters and Sorting - Optimized for Rich Indian Ladies */}
+      <Grid container spacing={4} sx={{ mb: 6 }}>
+        {/* Refined Filters Sidebar - Moved to far left for maximum space */}
+        <Grid size={{ xs: 12, md: 2.5 }}>
+          <Paper sx={{ 
+            p: 4, 
+            borderRadius: 4,
+            background: `linear-gradient(135deg, #FAF8F5, #F7F3F0)`,
+            boxShadow: '0 8px 32px rgba(114, 47, 55, 0.1)',
+            border: `1px solid rgba(212, 175, 55, 0.2)`,
+          }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 4 }}>
+              <Typography 
+                variant="h6" 
+                sx={{ 
+                  fontFamily: "'Playfair Display', serif",
+                  fontWeight: 600, 
+                  display: 'flex', 
+                  alignItems: 'center',
+                  color: theme.palette.primary.main,
+                  fontSize: '1.3rem',
+                }}
+              >
                 <FilterList sx={{ mr: 1 }} />
-                Filters
+                Refine Selection
               </Typography>
               <Button
                 size="small"
                 onClick={clearAllFilters}
                 startIcon={<Clear />}
-                sx={{ fontSize: '0.75rem' }}
+                sx={{ 
+                  fontSize: '0.75rem',
+                  fontFamily: "'Lora', serif",
+                  color: theme.palette.secondary.main,
+                }}
               >
                 Clear All
               </Button>
@@ -314,19 +642,31 @@ const ProductsPage: React.FC = () => {
           </Paper>
         </Grid>
 
-        {/* Products Section */}
-        <Grid size={{ xs: 12, md: 9 }}>
-          {/* Sort and View Options */}
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-            <Typography variant="body2" color="text.secondary">
-              Showing {filteredProducts.length} products
+        {/* Elegant Products Section - Maximum Screen Utilization */}
+        <Grid size={{ xs: 12, md: 9.5 }}>
+          {/* Refined Sort and View Options */}
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
+            <Typography 
+              variant="h6" 
+              sx={{ 
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: 600,
+                color: 'text.primary',
+                fontSize: '1.2rem',
+              }}
+            >
+              Showing {filteredProducts.length} Exquisite Pieces
             </Typography>
-            <FormControl size="small" sx={{ minWidth: 200 }}>
-              <InputLabel>Sort By</InputLabel>
+            <FormControl size="small" sx={{ minWidth: 220 }}>
+              <InputLabel sx={{ fontFamily: "'Lora', serif" }}>Sort By</InputLabel>
               <Select
                 value={sortBy}
                 label="Sort By"
                 onChange={(e) => setSortBy(e.target.value)}
+                sx={{
+                  fontFamily: "'Lora', serif",
+                  borderRadius: 3,
+                }}
               >
                 <MenuItem value="name">Name (A-Z)</MenuItem>
                 <MenuItem value="price-low">Price (Low to High)</MenuItem>
@@ -336,11 +676,11 @@ const ProductsPage: React.FC = () => {
             </FormControl>
           </Box>
 
-          {/* Products Grid */}
+          {/* Luxurious Square Products Grid - Perfect for Rich Indian Ladies */}
           <Grid container spacing={3}>
             {filteredProducts.map((product) => (
-              <Grid size={{ xs: 12, sm: 6, lg: 4 }} key={product.id}>
-                <ProductCard
+              <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={product.id}>
+                <LuxurySquareProductCard
                   product={product}
                   onAddToCart={handleAddToCart}
                   onToggleFavorite={handleToggleFavorite}
